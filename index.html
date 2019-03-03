@@ -11,20 +11,17 @@
     <div class="notes">
     </div>
     <form action="index.html">
-      S = <div id="setBracket">{</div> <input id="rawSet" onkeypress="genPowerSet" placeholder="Seperate elements using commas (,)" type="text" size="50"> <div id="setBracket">}</div><br><br><br>
-      <button id="submit_button" type="button" onclick="genPowerSet()">Powerset(S)</button>
+      S = <div id="setBracket">{</div> <input id="rawSet" " placeholder="Seperate elements using commas (,)" type="text" size="50"> <div id="setBracket">}</div><br><br><br>
+      <button id="submit_button" type="button" onclick="genPowerSet()">Find Subsets</button>
       <ul id="powerset"></ul>
     </form>
     <script>
+      var X = [1,2,3,4];
+      console.log(X.length == (new Set(X)).size);
+
       function isValidSet(set){
-        for(var i = 0; i < set.length-1; i++){
-          for(var k = 1; k < set.length; k++){
-            if(set[i] == set[k]){
-              return false;
-            }
-          }
-        }
-        return true;
+        if(set.length == (new Set(set)).size){return true;}
+        return false;
       }
 
 
@@ -48,10 +45,10 @@
       }
 
       function genPowerSet(){
-
         var ul = document.getElementById('powerset');
         deleteAllChildren(ul);
         var S = rawSet.value.split(',');
+        //S = new Set(SList);
         if(isValidSet(S)){
           for(var i = 0; i < Math.pow(2,S.length); i++){
             //nums.push(dec2bin(i));
