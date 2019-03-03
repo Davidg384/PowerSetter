@@ -4,9 +4,13 @@ body{
   text-align: center;
 }
 body h1{
-  font-size: 2em;
-  -webkit-text-stroke-width: 1.4px;
+  font-size: 2.5em;
+  -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
+}
+
+a{
+  color: hotpink;
 }
 
 ul{
@@ -14,7 +18,7 @@ ul{
   border-width: thick;
   border-color: black;
   list-style: none;
-  font-size: 1.4em;
+  font-size: 1.5em;
   text-align: left;
   margin-left: 20%;
   margin-top: 5%;
@@ -22,13 +26,6 @@ ul{
 }
 ul,li{
   padding: 5px,5px;
-}
-
-body .notes{
-  display: block;
-  font-size: 12px;
-  padding-top: 0em;
-  padding-bottom: 2em;
 }
 
 #setBracket{
