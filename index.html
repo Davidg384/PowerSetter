@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>The Powerset of the Cell!</title>
+  </head>
+  <body>
+    <h1>Power Set Calculator</h1>
+    <p>Input elements and submit to generate powerset.</p>
+    <div class="notes">
+    </div>
+    <form action="index.html">
+      S = <div id="setBracket">{</div> <input id="rawSet" onkeypress="genPowerSet" placeholder="Seperate elements using commas (,)" type="text" size="50"> <div id="setBracket">}</div><br><br><br>
+      <button id="submit_button" type="button" onclick="genPowerSet()">Powerset(S)</button>
+      <ul id="powerset"></ul>
+    </form>
+    <script>
+      function isValidSet(set){
+        for(var i = 0; i < set.length-1; i++){
+          for(var k = 1; k < set.length; k++){
+            if(set[i] == set[k]){
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+
+
+      function deleteAllChildren(unordered_list){
+        while (unordered_list.firstChild) {
+            unordered_list.removeChild(unordered_list.firstChild);
+        }
+      }
+
+      function dec2bin(dec){
+        return (dec >>> 0).toString(2);
+      }
+
+      function padZeroes(num, n){
+        numZeroes = n - num.length;
+        var newNum = "";
+        for(var i = 0; i < numZeroes; i++){
+          newNum = newNum + "0";
+        }
+        return newNum + num;
+      }
+
+      function genPowerSet(){
+
+        var ul = document.getElementById('powerset');
+        deleteAllChildren(ul);
+        var S = rawSet.value.split(',');
+        if(isValidSet(S)){
+          for(var i = 0; i < Math.pow(2,S.length); i++){
+            //nums.push(dec2bin(i));
+            var subset = [];
+            for(var k = 0; k < S.length; k++){
+              if(padZeroes(dec2bin(i), S.length)[k] == "1"){
+                subset.push(S[k]);
+              }
+            }
+            var li = document.createElement('li');
+            li.appendChild(document.createTextNode('{'+String(subset)+'}'));
+            ul.appendChild(li);
+          }
+        } else{
+          alert('Invalid Set');
+        }
+      }
+    </script>
+  </body>
+
+
+</html>
