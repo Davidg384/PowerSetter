@@ -3,27 +3,22 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
-    <title>The Powerset of the Cell!</title>
+    <title>Power Through!</title>
   </head>
   <body>
     <h1>Power Set Calculator</h1>
     <p>Input elements and submit to generate powerset.</p>
-    <div class="notes">
-    </div>
+    <p><a href="readme.txt">Click here for details</a></p>
     <form action="index.html">
       S = <div id="setBracket">{</div> <input id="rawSet" " placeholder="Seperate elements using commas (,)" type="text" size="50"> <div id="setBracket">}</div><br><br><br>
       <button id="submit_button" type="button" onclick="genPowerSet()">Find Subsets</button>
       <ul id="powerset"></ul>
     </form>
     <script>
-      var X = [1,2,3,4];
-      console.log(X.length == (new Set(X)).size);
-
       function isValidSet(set){
         if(set.length == (new Set(set)).size){return true;}
         return false;
       }
-
 
       function deleteAllChildren(unordered_list){
         while (unordered_list.firstChild) {
